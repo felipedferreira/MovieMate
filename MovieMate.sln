@@ -3,6 +3,26 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1 Presentation", "1 Presentation", "{8350FA45-6206-4B84-AFD9-B79572A0CC03}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{4F4280B7-C869-41A8-87AE-7A04A6E98375}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Adapters", "Adapters", "{17AFC0F6-5121-4C1C-B284-38DFD07C7949}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2 Shared", "2 Shared", "{C7ED8CA0-6A5F-4ECA-808F-3FA8BB1E3A9B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{11C327AE-92A3-422D-BF0C-4A9DA52895E0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MovieMate.API", "src\presentation\MovieMate.API\MovieMate.API.csproj", "{07D9A3AD-5DE9-497E-A267-4DF2FFD35E55}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MovieMate.Application", "src\shared\MovieMate.Application\MovieMate.Application.csproj", "{94AA1EAC-A31B-4D97-A597-7BF8451CF5F8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MovieMate.Domain", "src\shared\MovieMate.Domain\MovieMate.Domain.csproj", "{FAEC63F9-ED6C-4B08-8B46-CC9D3A53A031}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MovieMate.DataAccess", "src\adapters\MovieMate.DataAccess\MovieMate.DataAccess.csproj", "{B011E2D0-4BCA-4600-A9EB-0C012824F931}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MovieMate.Application.Abstractions", "src\shared\MovieMate.Application.Abstractions\MovieMate.Application.Abstractions.csproj", "{BD528F76-F962-4280-B281-1059242CD56E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -10,5 +30,37 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{8350FA45-6206-4B84-AFD9-B79572A0CC03} = {4F4280B7-C869-41A8-87AE-7A04A6E98375}
+		{C7ED8CA0-6A5F-4ECA-808F-3FA8BB1E3A9B} = {4F4280B7-C869-41A8-87AE-7A04A6E98375}
+		{17AFC0F6-5121-4C1C-B284-38DFD07C7949} = {C7ED8CA0-6A5F-4ECA-808F-3FA8BB1E3A9B}
+		{07D9A3AD-5DE9-497E-A267-4DF2FFD35E55} = {8350FA45-6206-4B84-AFD9-B79572A0CC03}
+		{94AA1EAC-A31B-4D97-A597-7BF8451CF5F8} = {C7ED8CA0-6A5F-4ECA-808F-3FA8BB1E3A9B}
+		{FAEC63F9-ED6C-4B08-8B46-CC9D3A53A031} = {C7ED8CA0-6A5F-4ECA-808F-3FA8BB1E3A9B}
+		{B011E2D0-4BCA-4600-A9EB-0C012824F931} = {17AFC0F6-5121-4C1C-B284-38DFD07C7949}
+		{BD528F76-F962-4280-B281-1059242CD56E} = {C7ED8CA0-6A5F-4ECA-808F-3FA8BB1E3A9B}
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{07D9A3AD-5DE9-497E-A267-4DF2FFD35E55}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{07D9A3AD-5DE9-497E-A267-4DF2FFD35E55}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{07D9A3AD-5DE9-497E-A267-4DF2FFD35E55}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{07D9A3AD-5DE9-497E-A267-4DF2FFD35E55}.Release|Any CPU.Build.0 = Release|Any CPU
+		{94AA1EAC-A31B-4D97-A597-7BF8451CF5F8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{94AA1EAC-A31B-4D97-A597-7BF8451CF5F8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{94AA1EAC-A31B-4D97-A597-7BF8451CF5F8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{94AA1EAC-A31B-4D97-A597-7BF8451CF5F8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FAEC63F9-ED6C-4B08-8B46-CC9D3A53A031}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FAEC63F9-ED6C-4B08-8B46-CC9D3A53A031}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FAEC63F9-ED6C-4B08-8B46-CC9D3A53A031}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FAEC63F9-ED6C-4B08-8B46-CC9D3A53A031}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B011E2D0-4BCA-4600-A9EB-0C012824F931}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B011E2D0-4BCA-4600-A9EB-0C012824F931}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B011E2D0-4BCA-4600-A9EB-0C012824F931}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B011E2D0-4BCA-4600-A9EB-0C012824F931}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BD528F76-F962-4280-B281-1059242CD56E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BD528F76-F962-4280-B281-1059242CD56E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BD528F76-F962-4280-B281-1059242CD56E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BD528F76-F962-4280-B281-1059242CD56E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
