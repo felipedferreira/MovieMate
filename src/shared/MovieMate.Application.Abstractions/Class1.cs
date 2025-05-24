@@ -1,5 +1,6 @@
-﻿namespace MovieMate.Application.Abstractions;
-
-public class Class1
+﻿namespace MovieMate.Application.Abstractions
 {
+    public class Class1
+    {
+    }
 }

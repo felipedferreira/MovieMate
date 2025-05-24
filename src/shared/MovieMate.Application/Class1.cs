@@ -1,5 +1,6 @@
-﻿namespace MovieMate.Application;
-
-public class Class1
+﻿namespace MovieMate.Application
 {
+    public class Class1
+    {
+    }
 }

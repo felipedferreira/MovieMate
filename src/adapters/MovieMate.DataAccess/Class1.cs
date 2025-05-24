@@ -1,5 +1,6 @@
-﻿namespace MovieMate.DataAccess;
-
-public class Class1
+﻿namespace MovieMate.DataAccess
 {
+    public class Class1
+    {
+    }
 }

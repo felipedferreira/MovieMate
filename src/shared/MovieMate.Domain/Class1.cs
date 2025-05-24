@@ -1,5 +1,6 @@
-﻿namespace MovieMate.Domain;
-
-public class Class1
+﻿namespace MovieMate.Domain
 {
+    public class Class1
+    {
+    }
 }
