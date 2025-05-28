@@ -1,3 +1,4 @@
+using Scalar.AspNetCore;
 using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -25,7 +26,14 @@ app.UseSerilogRequestLogging();
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
+    // -> /openapi/v1.json
     app.MapOpenApi();
+    // -> /scalar/v1
+    app.MapScalarApiReference(options =>
+    {
+        options.Theme = ScalarTheme.BluePlanet;
+        options.EnabledClients = [ScalarClient.HttpClient, ScalarClient.Axios, ScalarClient.Fetch];
+    });
 }
 
 app.UseHttpsRedirection();
