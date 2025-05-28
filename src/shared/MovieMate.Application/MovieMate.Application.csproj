@@ -3,6 +3,7 @@
       <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="9.0.0" />
     </ItemGroup>
     <ItemGroup>
+      <ProjectReference Include="..\..\adapters\MovieMate.DataAccess\MovieMate.DataAccess.csproj" />
       <ProjectReference Include="..\MovieMate.Application.Abstractions\MovieMate.Application.Abstractions.csproj" />
     </ItemGroup>
 </Project>
