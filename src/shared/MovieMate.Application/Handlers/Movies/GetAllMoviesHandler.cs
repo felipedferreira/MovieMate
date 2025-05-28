@@ -5,17 +5,18 @@ using MovieMate.Application.Abstractions.Services;
 
 namespace MovieMate.Application.Handlers.Movies
 {
-    internal class CreateMovieHandler : ICreateMovieHandler
+    internal class GetAllMoviesHandler : IGetAllMoviesHandler
     {
         private readonly IMovieRepository _movieRepository;
-        public CreateMovieHandler(IMovieRepository movieRepository)
+        public GetAllMoviesHandler(IMovieRepository movieRepository)
         {
             _movieRepository = movieRepository;
         }
 
-        public async Task<Guid> HandleAsync(Movie movie, CancellationToken cancellationToken = default)
+        public async Task<IEnumerable<Movie>> GetAllAsync(CancellationToken cancellationToken = default)
         {
-            return await _movieRepository.CreateAsync(movie.ToDomainModel(), cancellationToken);
+            var movies = await _movieRepository.GetAllAsync(cancellationToken);
+            return movies.Select(ApplicationMappingExtensions.ToApplicationModel);
         }
     }
 }

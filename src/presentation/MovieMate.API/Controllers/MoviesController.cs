@@ -1,4 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using MovieMate.API.Contracts.Requests;
+using MovieMate.API.Mapping;
 using MovieMate.Application.Abstractions.Handlers.Movies;
 
 namespace MovieMate.API.Controllers
@@ -13,13 +15,21 @@ namespace MovieMate.API.Controllers
             _logger = logger;
         }
 
+        [HttpPost]
+        public async Task<IActionResult> CreateMovieAsync([FromServices] ICreateMovieHandler handler, [FromBody] CreateMovieRequest request ,CancellationToken cancellationToken = default)
+        {
+            var id = await handler.HandleAsync(request.ToApplication(), cancellationToken);
+            // Here you would typically fetch the movies from a service or database
+            return Ok(id);
+        }
+
         [HttpGet]
-        public async Task<IActionResult> GetMoviesAsync([FromServices] ICreateMovieHandler handler, CancellationToken cancellationToken = default)
+        public async Task<IActionResult> GetAllAsync([FromServices] IGetAllMoviesHandler handler, CancellationToken cancellationToken = default)
         {
             _logger.LogInformation("Fetching the list of movies");
-            await handler.HandleAsync(cancellationToken);
+            var movies = await handler.GetAllAsync(cancellationToken);
             // Here you would typically fetch the movies from a service or database
-            return Ok(new List<string> { "Movie 1", "Movie 2", "Movie 3" });
+            return Ok(movies);
         }
     }
 }

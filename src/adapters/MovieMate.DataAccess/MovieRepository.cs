@@ -12,10 +12,10 @@ namespace MovieMate.DataAccess
             _movies = new List<Movie>();
         }
 
-        public Task CreateAsync(Movie movie, CancellationToken cancellationToken = default)
+        public Task<Guid> CreateAsync(Movie movie, CancellationToken cancellationToken = default)
         {
             _movies.Add(movie);
-            return Task.CompletedTask;
+            return Task.FromResult(movie.Id);
         }
 
         public Task DeleteByIdAsync(Guid id, CancellationToken cancellationToken = default)

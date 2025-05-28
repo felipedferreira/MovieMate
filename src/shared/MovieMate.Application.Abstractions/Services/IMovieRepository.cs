@@ -4,7 +4,7 @@ namespace MovieMate.Application.Abstractions.Services
 {
     public interface IMovieRepository
     {
-        Task CreateAsync(Movie movie, CancellationToken cancellationToken = default);
+        Task<Guid> CreateAsync(Movie movie, CancellationToken cancellationToken = default);
 
         Task<Movie> GetByIdAsync(Guid id, CancellationToken cancellationToken = default);
 
