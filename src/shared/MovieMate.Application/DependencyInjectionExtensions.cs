@@ -1,4 +1,7 @@
-﻿namespace Microsoft.Extensions.DependencyInjection
+﻿using MovieMate.Application.Abstractions.Handlers.Movies;
+using MovieMate.Application.Handlers.Movies;
+
+namespace Microsoft.Extensions.DependencyInjection
 {
     public static class DependencyInjectionExtensions
     {
@@ -9,7 +12,11 @@
         /// <returns></returns>
         public static IServiceCollection AddApplicationServices(this IServiceCollection services)
         {
-            return services;
+            return services
+                .AddHandlers();
         }
+
+        private static IServiceCollection AddHandlers(this IServiceCollection services) => services
+            .AddScoped<ICreateMovieHandler, CreateMovieHandler>();
     }
 }
