@@ -2,8 +2,8 @@
 
 namespace MovieMate.Application.Abstractions.Handlers.Movies
 {
-    public interface ICreateMovieHandler
+    public interface IGetMovieByIdAsync
     {
-        Task<Guid> CreateAsync(Movie movie, CancellationToken cancellationToken);
+        Task<Movie> GetAsync(Guid id, CancellationToken cancellationToken = default);
     }
 }

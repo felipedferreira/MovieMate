@@ -4,6 +4,6 @@ namespace MovieMate.Application.Abstractions.Handlers.Movies
 {
     public interface IGetAllMoviesHandler
     {
-        Task<IEnumerable<Movie>> GetAllAsync(CancellationToken cancellationToken = default);
+        Task<IEnumerable<Movie>> GetAsync(CancellationToken cancellationToken = default);
     }
 }
