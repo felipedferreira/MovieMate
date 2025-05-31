@@ -13,7 +13,7 @@ namespace MovieMate.Application.Handlers.Movies
             _movieRepository = movieRepository;
         }
 
-        public async Task<IEnumerable<Movie>> GetAllAsync(CancellationToken cancellationToken = default)
+        public async Task<IEnumerable<Movie>> GetAsync(CancellationToken cancellationToken = default)
         {
             var movies = await _movieRepository.GetAllAsync(cancellationToken);
             return movies.Select(ApplicationMappingExtensions.ToApplicationModel);

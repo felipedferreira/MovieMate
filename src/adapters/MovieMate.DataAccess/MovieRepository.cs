@@ -34,9 +34,9 @@ namespace MovieMate.DataAccess
             return Task.FromResult<IEnumerable<Movie>>(_movies);
         }
 
-        public Task<Movie> GetByIdAsync(Guid id, CancellationToken cancellationToken = default)
+        public Task<Movie?> GetByIdAsync(Guid id, CancellationToken cancellationToken = default)
         {
-            var movie = _movies.Single(m => m.Id == id);
+            var movie = _movies.SingleOrDefault(m => m.Id == id);
             return Task.FromResult(movie);
         }
 
