@@ -8,15 +8,16 @@ namespace MovieMate.Application.Handlers.Movies
 {
     internal class GetMovieByIdAsync : IGetMovieByIdAsync
     {
-        private readonly IMovieRepository _movieRepository;
-        public GetMovieByIdAsync(IMovieRepository movieRepository)
+        private readonly IMovieQuery _movieQuery;
+        public GetMovieByIdAsync(IMovieQuery movieQuery)
         {
-            _movieRepository = movieRepository;
+            _movieQuery = movieQuery;
         }
 
         public async Task<Movie> GetAsync(Guid id, CancellationToken cancellationToken = default)
         {
-            var movie = await _movieRepository.GetByIdAsync(id, cancellationToken) ?? throw new NotFoundException($"Movie with ID {id} not found.");
+            var movie = await _movieQuery.GetByIdAsync(id, cancellationToken)
+                ?? throw new NotFoundException($"Movie with ID {id} not found.");
             return movie.ToApplicationModel();
         }
     }

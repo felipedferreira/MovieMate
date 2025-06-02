@@ -7,15 +7,15 @@ namespace MovieMate.Application.Handlers.Movies
 {
     internal class GetAllMoviesHandler : IGetAllMoviesHandler
     {
-        private readonly IMovieRepository _movieRepository;
-        public GetAllMoviesHandler(IMovieRepository movieRepository)
+        private readonly IMovieQuery _movieQuery;
+        public GetAllMoviesHandler(IMovieQuery movieQuery)
         {
-            _movieRepository = movieRepository;
+            _movieQuery = movieQuery;
         }
 
         public async Task<IEnumerable<Movie>> GetAsync(CancellationToken cancellationToken = default)
         {
-            var movies = await _movieRepository.GetAllAsync(cancellationToken);
+            var movies = await _movieQuery.GetAllAsync(cancellationToken);
             return movies.Select(ApplicationMappingExtensions.ToApplicationModel);
         }
     }

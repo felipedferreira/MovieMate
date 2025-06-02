@@ -9,6 +9,7 @@ namespace Microsoft.Extensions.DependencyInjection
         {
             return services
                 .AddSingleton<DataContext>()
+                .AddSingleton<IMovieQuery, MovieQuery>()
                 .AddSingleton<IMovieRepository, MovieRepository>();
         }
     }
