@@ -20,6 +20,7 @@ namespace Microsoft.Extensions.DependencyInjection
         private static IServiceCollection AddHandlers(this IServiceCollection services) => services
             .AddScoped<ICreateMovieHandler, CreateMovieHandler>()
             .AddScoped<IGetMovieByIdAsync, GetMovieByIdAsync>()
-            .AddScoped<IGetAllMoviesHandler, GetAllMoviesHandler>();
+            .AddScoped<IGetAllMoviesHandler, GetAllMoviesHandler>()
+            .AddScoped<IUpdateMovieAsync, UpdateMovieAsync>();
     }
 }

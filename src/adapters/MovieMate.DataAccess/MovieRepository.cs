@@ -12,7 +12,7 @@ namespace MovieMate.DataAccess
             _movies = new List<Movie>();
         }
 
-        public Task<Guid> CreateAsync(Movie movie, CancellationToken cancellationToken = default)
+        public Task CreateAsync(Movie movie, CancellationToken cancellationToken = default)
         {
             _movies.Add(movie);
             return Task.FromResult(movie.Id);
@@ -46,9 +46,14 @@ namespace MovieMate.DataAccess
             return Task.FromResult(movie);
         }
 
-        public Task UpdateAsync(Movie movie, CancellationToken cancellationToken = default)
+        public async Task UpdateAsync(Movie movie, CancellationToken cancellationToken = default)
         {
-            throw new NotImplementedException();
+            var index = _movies.FindIndex(m => m.Id == movie.Id);
+            if (index >= 0)
+            {
+                await Task.Delay(1, cancellationToken);
+                _movies[index] = movie;
+            }
         }
     }
 }

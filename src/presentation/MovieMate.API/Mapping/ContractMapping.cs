@@ -6,11 +6,16 @@ namespace MovieMate.API.Mapping
 {
     public static class ContractMapping
     {
+        /// <summary>
+        /// Maps a <see cref="CreateMovieRequest"/> to an <see cref="ApplicationModel.Movie"/>.
+        /// </summary>
+        /// <param name="movie"></param>
+        /// <returns></returns>
         public static ApplicationModel.Movie ToApplication(this CreateMovieRequest movie)
         {
             return new ApplicationModel.Movie
             {
-                Id = Guid.Empty,
+                Id = Guid.NewGuid(),
                 Genres = movie.Genres,
                 Title = movie.Title,
                 YearOfRelease = movie.YearOfRelease,

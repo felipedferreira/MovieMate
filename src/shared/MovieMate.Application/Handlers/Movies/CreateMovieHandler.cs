@@ -13,9 +13,9 @@ namespace MovieMate.Application.Handlers.Movies
             _movieRepository = movieRepository;
         }
 
-        public async Task<Guid> CreateAsync(Movie movie, CancellationToken cancellationToken = default)
+        public async Task CreateAsync(Movie movie, CancellationToken cancellationToken = default)
         {
-            return await _movieRepository.CreateAsync(movie.ToDomainModel(), cancellationToken);
+            await _movieRepository.CreateAsync(movie.ToDomainModel(), cancellationToken);
         }
     }
 }

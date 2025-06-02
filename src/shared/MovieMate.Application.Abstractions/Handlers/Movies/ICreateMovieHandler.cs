@@ -4,6 +4,6 @@ namespace MovieMate.Application.Abstractions.Handlers.Movies
 {
     public interface ICreateMovieHandler
     {
-        Task<Guid> CreateAsync(Movie movie, CancellationToken cancellationToken);
+        Task CreateAsync(Movie movie, CancellationToken cancellationToken);
     }
 }

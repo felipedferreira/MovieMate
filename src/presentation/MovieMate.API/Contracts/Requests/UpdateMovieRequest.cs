@@ -2,8 +2,6 @@
 {
     public class UpdateMovieRequest
     {
-        public Guid Id { get; set; }
-
         public required string Title { get; init; }
 
         public required int YearOfRelease { get; init; }
