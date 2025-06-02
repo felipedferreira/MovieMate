@@ -7,7 +7,9 @@ namespace Microsoft.Extensions.DependencyInjection
     {
         public static IServiceCollection AddDataAccessServices(this IServiceCollection services)
         {
-            return services.AddSingleton<IMovieRepository, MovieRepository>();
+            return services
+                .AddSingleton<DataContext>()
+                .AddSingleton<IMovieRepository, MovieRepository>();
         }
     }
 }

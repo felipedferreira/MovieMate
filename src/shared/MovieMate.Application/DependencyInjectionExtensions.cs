@@ -21,6 +21,7 @@ namespace Microsoft.Extensions.DependencyInjection
             .AddScoped<ICreateMovieHandler, CreateMovieHandler>()
             .AddScoped<IGetMovieByIdAsync, GetMovieByIdAsync>()
             .AddScoped<IGetAllMoviesHandler, GetAllMoviesHandler>()
-            .AddScoped<IUpdateMovieAsync, UpdateMovieAsync>();
+            .AddScoped<IUpdateMovieAsync, UpdateMovieAsync>()
+            .AddScoped<IDeleteMovieAsync, DeleteMovieAsync>();
     }
 }

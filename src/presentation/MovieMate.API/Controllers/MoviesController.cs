@@ -17,7 +17,10 @@ namespace MovieMate.API.Controllers
         }
 
         [HttpPost(MovieApiEndpoints.Create)]
-        public async Task<IActionResult> CreateMovieAsync([FromServices] ICreateMovieHandler handler, [FromBody] CreateMovieRequest request ,CancellationToken cancellationToken = default)
+        public async Task<IActionResult> CreateMovieAsync(
+            [FromServices] ICreateMovieHandler handler,
+            [FromBody] CreateMovieRequest request,
+            CancellationToken cancellationToken = default)
         {
             _logger.LogInformation("Creating a new Movie");
             var movie = request.ToApplication();
@@ -27,7 +30,9 @@ namespace MovieMate.API.Controllers
         }
 
         [HttpGet(MovieApiEndpoints.GetAll)]
-        public async Task<IActionResult> GetAllAsync([FromServices] IGetAllMoviesHandler handler, CancellationToken cancellationToken = default)
+        public async Task<IActionResult> GetAllAsync(
+            [FromServices] IGetAllMoviesHandler handler,
+            CancellationToken cancellationToken = default)
         {
             _logger.LogInformation("Fetching all movies.");
             var movies = await handler.GetAsync(cancellationToken);
@@ -37,7 +42,10 @@ namespace MovieMate.API.Controllers
 
         [HttpGet(MovieApiEndpoints.GetById)]
         [ActionName(nameof(GetMovieByIdAsync))]
-        public async Task<IActionResult> GetMovieByIdAsync([FromRoute] Guid id, [FromServices] IGetMovieByIdAsync handler, CancellationToken cancellationToken = default)
+        public async Task<IActionResult> GetMovieByIdAsync(
+            [FromRoute] Guid id,
+            [FromServices] IGetMovieByIdAsync handler,
+            CancellationToken cancellationToken = default)
         {
             try
             {
@@ -52,13 +60,31 @@ namespace MovieMate.API.Controllers
         }
 
         [HttpPut(MovieApiEndpoints.Update)]
-        public async Task<IActionResult> UpdateMovieAsync([FromRoute] Guid id, [FromBody] UpdateMovieRequest request, [FromServices] IUpdateMovieAsync handler, CancellationToken cancellationToken = default)
+        public async Task<IActionResult> UpdateMovieAsync(
+            [FromRoute] Guid id,
+            [FromBody] UpdateMovieRequest request,
+            [FromServices] IUpdateMovieAsync handler,
+            CancellationToken cancellationToken = default)
         {
             try
             {
                 var movie = request.ToApplication(id);
                 await handler.UpdateAsync(movie, cancellationToken);
                 return NoContent();
+            }
+            catch (NotFoundException)
+            {
+                return NotFound($"Unable to find movie by id '{id}'.");
+            }
+        }
+
+        [HttpDelete(MovieApiEndpoints.Delete)]
+        public async Task<IActionResult> DeleteMovieAsync([FromRoute] Guid id, [FromServices] IDeleteMovieAsync handler, CancellationToken cancellationToken = default)
+        {
+            try
+            {
+                await handler.DeleteByIdAsync(id, cancellationToken);
+                return Accepted();
             }
             catch (NotFoundException)
             {
