@@ -31,6 +31,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "misc", "misc", "{02EA681E-C
 		Directory.Build.props = Directory.Build.props
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MovieMate.API.Integration", "tests\integration\MovieMate.API.Integration\MovieMate.API.Integration.csproj", "{BBE50202-82D7-487D-B5DB-FC7A4F5E9B5A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -57,6 +59,10 @@ Global
 		{BD528F76-F962-4280-B281-1059242CD56E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BD528F76-F962-4280-B281-1059242CD56E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BD528F76-F962-4280-B281-1059242CD56E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BBE50202-82D7-487D-B5DB-FC7A4F5E9B5A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BBE50202-82D7-487D-B5DB-FC7A4F5E9B5A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BBE50202-82D7-487D-B5DB-FC7A4F5E9B5A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BBE50202-82D7-487D-B5DB-FC7A4F5E9B5A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -70,6 +76,7 @@ Global
 		{FAEC63F9-ED6C-4B08-8B46-CC9D3A53A031} = {C7ED8CA0-6A5F-4ECA-808F-3FA8BB1E3A9B}
 		{B011E2D0-4BCA-4600-A9EB-0C012824F931} = {17AFC0F6-5121-4C1C-B284-38DFD07C7949}
 		{BD528F76-F962-4280-B281-1059242CD56E} = {C7ED8CA0-6A5F-4ECA-808F-3FA8BB1E3A9B}
+		{BBE50202-82D7-487D-B5DB-FC7A4F5E9B5A} = {11C327AE-92A3-422D-BF0C-4A9DA52895E0}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {5C141F09-9885-4EB2-BCE9-1E14F49CC3DF}
