@@ -1,6 +1,6 @@
 ﻿using ApplicationModel = MovieMate.Application.Abstractions.Models;
 
-namespace MovieMate.Application.Abstractions.Extensions
+namespace MovieMate.Application.Extensions
 {
     public static class ApplicationMappingExtensions
     {
@@ -23,7 +23,27 @@ namespace MovieMate.Application.Abstractions.Extensions
                 Title = movie.Title,
                 YearOfRelease = movie.YearOfRelease,
                 Slug = movie.Slug,
-                Id = movie.Id.Equals(Guid.Empty) ? Guid.NewGuid() : movie.Id,
+                Id = movie.Id,
+            };
+        }
+
+        public static ApplicationModel.Genre ToApplicationModel(this Domain.Models.Genre domain)
+        {
+            return new ApplicationModel.Genre
+            {
+                Description = domain.Description,
+                Id = domain.Id,
+                Title = domain.Title,
+            };
+        }
+
+        public static Domain.Models.Genre ToDomainModel(this ApplicationModel.Genre model)
+        {
+            return new Domain.Models.Genre
+            {
+                Id = model.Id,
+                Title = model.Title,
+                Description = model.Description
             };
         }
     }

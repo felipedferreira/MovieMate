@@ -1,12 +1,10 @@
 ﻿using MovieMate.Application.Abstractions.Exceptions;
 using MovieMate.Domain.Models;
 
-namespace MovieMate.Application.Abstractions.Services
+namespace MovieMate.Application.Abstractions.Services.DataAccess
 {
-    public interface IMovieRepository
+    public interface IMovieQuery
     {
-        Task CreateAsync(Movie movie, CancellationToken cancellationToken = default);
-
         /// <summary>
         /// Searches for a movie by its id.
         /// </summary>
@@ -20,8 +18,5 @@ namespace MovieMate.Application.Abstractions.Services
 
         Task<Movie> GetBySlugAsync(string slug, CancellationToken cancellationToken = default);
 
-        Task UpdateAsync(Movie movie, CancellationToken cancellationToken = default);
-
-        Task DeleteByIdAsync(Guid id, CancellationToken cancellationToken = default);
     }
 }

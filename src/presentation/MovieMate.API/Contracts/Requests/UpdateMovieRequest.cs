@@ -1,6 +1,6 @@
 ﻿namespace MovieMate.API.Contracts.Requests
 {
-    public class UpdateMovieRequest
+    public sealed class UpdateMovieRequest
     {
         public required string Title { get; init; }
 

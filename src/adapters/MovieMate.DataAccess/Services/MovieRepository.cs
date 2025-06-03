@@ -1,4 +1,4 @@
-﻿using MovieMate.Application.Abstractions.Services;
+﻿using MovieMate.Application.Abstractions.Services.DataAccess;
 using MovieMate.Domain.Models;
 
 namespace MovieMate.DataAccess
@@ -29,20 +29,9 @@ namespace MovieMate.DataAccess
             return Task.CompletedTask;
         }
 
-        public Task<IEnumerable<Movie>> GetAllAsync(CancellationToken cancellationToken = default)
-        {
-            return Task.FromResult<IEnumerable<Movie>>(_dataSource.Movies);
-        }
-
         public Task<Movie?> GetByIdAsync(Guid id, CancellationToken cancellationToken = default)
         {
             var movie = _dataSource.Movies.SingleOrDefault(m => m.Id == id);
-            return Task.FromResult(movie);
-        }
-
-        public Task<Movie> GetBySlugAsync(string slug, CancellationToken cancellationToken = default)
-        {
-            var movie = _dataSource.Movies.Single(m => m.Slug.Equals(slug));
             return Task.FromResult(movie);
         }
 

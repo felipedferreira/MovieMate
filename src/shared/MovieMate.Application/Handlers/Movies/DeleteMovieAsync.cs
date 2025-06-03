@@ -1,6 +1,6 @@
 ﻿using MovieMate.Application.Abstractions.Exceptions;
 using MovieMate.Application.Abstractions.Handlers.Movies;
-using MovieMate.Application.Abstractions.Services;
+using MovieMate.Application.Abstractions.Services.DataAccess;
 
 namespace MovieMate.Application.Handlers.Movies
 {

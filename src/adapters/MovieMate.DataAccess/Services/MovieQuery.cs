@@ -1,7 +1,7 @@
-﻿using MovieMate.Application.Abstractions.Services;
+﻿using MovieMate.Application.Abstractions.Services.DataAccess;
 using MovieMate.Domain.Models;
 
-namespace MovieMate.DataAccess
+namespace MovieMate.DataAccess.Services
 {
     internal class MovieQuery : IMovieQuery
     {

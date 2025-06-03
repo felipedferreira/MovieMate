@@ -1,19 +1,19 @@
 ﻿using MovieMate.API.Contracts.Requests;
 using MovieMate.API.Contracts.Responses;
-using ApplicationModel = MovieMate.Application.Abstractions.Models;
+using MovieMate.Application.Abstractions.Models;
 
 namespace MovieMate.API.Mapping
 {
     public static class ContractMapping
     {
         /// <summary>
-        /// Maps a <see cref="CreateMovieRequest"/> to an <see cref="ApplicationModel.Movie"/>.
+        /// Maps a <see cref="CreateMovieRequest"/> to an <see cref="Movie"/>.
         /// </summary>
         /// <param name="movie"></param>
         /// <returns></returns>
-        public static ApplicationModel.Movie ToApplication(this CreateMovieRequest movie)
+        public static Movie ToApplication(this CreateMovieRequest movie)
         {
-            return new ApplicationModel.Movie
+            return new Movie
             {
                 Id = Guid.NewGuid(),
                 Genres = movie.Genres,
@@ -22,10 +22,10 @@ namespace MovieMate.API.Mapping
             };
         }
 
-        public static ApplicationModel.Movie ToApplication(this UpdateMovieRequest movie, Guid id)
+        public static Movie ToApplication(this UpdateMovieRequest movie, Guid id)
         {
             // id, movie.Title, movie.YearOfRelease, movie.Genres
-            return new ApplicationModel.Movie
+            return new Movie
             {
                 Id = id,
                 Genres = movie.Genres,
@@ -34,7 +34,17 @@ namespace MovieMate.API.Mapping
             };
         }
 
-        public static MovieResponse ToResponse(this ApplicationModel.Movie movie)
+        public static Genre ToApplication(this CreateGenreRequest request)
+        {
+            return new Genre
+            {
+                Description = request.Description,
+                Id = Guid.NewGuid(),
+                Title = request.Title,
+            };
+        }
+
+        public static MovieResponse ToResponse(this Movie movie)
         {
             return new MovieResponse
             {
@@ -43,6 +53,16 @@ namespace MovieMate.API.Mapping
                 YearOfRelease = movie.YearOfRelease,
                 Genres = movie.Genres,
                 Slug = movie.Slug,
+            };
+        }
+
+        public static GenreResponse ToResponse(this Genre domain)
+        {
+            return new GenreResponse
+            {
+                Description = domain.Description,
+                Id = domain.Id,
+                Title = domain.Title,
             };
         }
     }

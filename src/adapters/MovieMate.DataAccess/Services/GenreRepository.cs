@@ -1,0 +1,20 @@
+﻿using MovieMate.Application.Abstractions.Services.DataAccess;
+using MovieMate.Domain.Models;
+
+namespace MovieMate.DataAccess.Services
+{
+    internal class GenreRepository : IGenreRepository
+    {
+        private readonly DataContext _dataContext;
+        public GenreRepository(DataContext dataContext)
+        {
+            _dataContext = dataContext;
+        }
+
+        public Task CreateAsync(Genre genre, CancellationToken cancellationToken = default)
+        {
+            _dataContext.Genres.Add(genre);
+            return Task.CompletedTask;
+        }
+    }
+}
