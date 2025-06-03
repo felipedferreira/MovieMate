@@ -15,6 +15,7 @@ namespace MovieMate.Application.Handlers.Genres
 
         public async Task CreateAsync(Genre genre, CancellationToken cancellationToken = default)
         {
+            // TODO - validate we have NOT added this genre before.
             await _genreRepository.CreateAsync(genre.ToDomainModel(), cancellationToken);
         }
     }
