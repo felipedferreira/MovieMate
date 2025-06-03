@@ -16,5 +16,11 @@ namespace MovieMate.DataAccess.Services
             _dataContext.Genres.Add(genre);
             return Task.CompletedTask;
         }
+
+        public Task CreateAsync(IEnumerable<Genre> genres, CancellationToken cancellationToken = default)
+        {
+            _dataContext.Genres.AddRange(genres);
+            return Task.CompletedTask;
+        }
     }
 }

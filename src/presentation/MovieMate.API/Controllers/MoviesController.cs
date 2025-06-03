@@ -22,11 +22,18 @@ namespace MovieMate.API.Controllers
             [FromBody] CreateMovieRequest request,
             CancellationToken cancellationToken = default)
         {
-            _logger.LogInformation("Creating a new Movie");
-            var movie = request.ToApplication();
-            _logger.LogInformation(MovieApiEndpoints.GetById, movie.Id);
-            await handler.CreateAsync(movie, cancellationToken);
-            return CreatedAtAction(nameof(GetMovieByIdAsync), new { id = movie.Id }, movie);
+            try
+            {
+                _logger.LogInformation("Creating a new Movie");
+                var movie = request.ToApplication();
+                _logger.LogInformation(MovieApiEndpoints.GetById, movie.Id);
+                await handler.CreateAsync(movie, cancellationToken);
+                return CreatedAtAction(nameof(GetMovieByIdAsync), new { id = movie.Id }, movie);
+            }
+            catch (InvalidGenreException ex)
+            {
+                return BadRequest(new { Genres = ex.InvalidGenreIds });
+            }
         }
 
         [HttpGet(MovieApiEndpoints.GetAll)]

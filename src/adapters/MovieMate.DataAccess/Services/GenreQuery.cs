@@ -15,5 +15,12 @@ namespace MovieMate.DataAccess.Services
         {
             return Task.FromResult<IEnumerable<Genre>>(_dataContext.Genres);
         }
+
+        public Task<IEnumerable<Genre>> FindByIds(IEnumerable<Guid> ids,CancellationToken cancellationToken = default)
+        {
+            var genres = _dataContext.Genres
+                .Where(g => ids.Contains(g.Id));
+            return Task.FromResult(genres);
+        }
     }
 }

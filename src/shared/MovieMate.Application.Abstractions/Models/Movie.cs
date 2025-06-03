@@ -12,7 +12,7 @@ namespace MovieMate.Application.Abstractions.Models
 
         public required int YearOfRelease { get; set; }
 
-        public required IEnumerable<string> Genres { get; init; } = Enumerable.Empty<string>();
+        public required IEnumerable<Guid> Genres { get; init; } = Enumerable.Empty<Guid>();
 
         private string GenerateSlug()
         {

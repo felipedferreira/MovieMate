@@ -1,5 +1,6 @@
 ﻿using MovieMate.Application.Abstractions.Services.DataAccess;
 using MovieMate.DataAccess;
+using MovieMate.DataAccess.Bootstrap;
 using MovieMate.DataAccess.Services;
 
 namespace Microsoft.Extensions.DependencyInjection
@@ -10,6 +11,7 @@ namespace Microsoft.Extensions.DependencyInjection
         {
             return services
                 .AddSingleton<DataContext>()
+                .AddHostedService<SeedDataService>()
                 // Movies
                 .AddSingleton<IMovieQuery, MovieQuery>()
                 .AddSingleton<IMovieRepository, MovieRepository>()
