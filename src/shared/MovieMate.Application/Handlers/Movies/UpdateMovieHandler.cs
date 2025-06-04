@@ -3,16 +3,15 @@ using MovieMate.Application.Extensions;
 using MovieMate.Application.Abstractions.Handlers.Movies;
 using MovieMate.Application.Abstractions.Services.DataAccess;
 using MovieMate.Domain.Models;
-using MovieMate.Application.Abstractions.Models;
 
 namespace MovieMate.Application.Handlers.Movies
 {
-    public class UpdateMovieAsync : IUpdateMovieAsync
+    public class UpdateMovieHandler : IUpdateMovieHandler
     {
         private readonly IMovieRepository _movieRepository;
         private readonly IGenreQuery _genreQuery;
 
-        public UpdateMovieAsync(
+        public UpdateMovieHandler(
             IMovieRepository movieRepository, IGenreQuery genreQuery)
         {
             _movieRepository = movieRepository;

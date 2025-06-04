@@ -6,10 +6,10 @@ using MovieMate.Application.Abstractions.Services.DataAccess;
 
 namespace MovieMate.Application.Handlers.Movies
 {
-    internal class GetMovieByIdAsync : IGetMovieByIdAsync
+    internal class GetMovieByIdHandler : IGetMovieByIdHandler
     {
         private readonly IMovieQuery _movieQuery;
-        public GetMovieByIdAsync(IMovieQuery movieQuery)
+        public GetMovieByIdHandler(IMovieQuery movieQuery)
         {
             _movieQuery = movieQuery;
         }
