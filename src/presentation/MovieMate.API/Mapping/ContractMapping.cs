@@ -24,7 +24,6 @@ namespace MovieMate.API.Mapping
 
         public static Movie ToApplication(this UpdateMovieRequest movie, Guid id)
         {
-            // id, movie.Title, movie.YearOfRelease, movie.Genres
             return new Movie
             {
                 Id = id,

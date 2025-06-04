@@ -43,7 +43,7 @@ namespace MovieMate.API.Controllers
         {
             _logger.LogInformation("Fetching all movies.");
             var movies = await handler.GetAsync(cancellationToken);
-            return Ok(movies.Select(ContractMapping.ToResponse));
+            return Ok(movies.Select(ContractMapping.ToResponse).ToArray());
         }
 
 
@@ -51,7 +51,7 @@ namespace MovieMate.API.Controllers
         [ActionName(nameof(GetMovieByIdAsync))]
         public async Task<IActionResult> GetMovieByIdAsync(
             [FromRoute] Guid id,
-            [FromServices] IGetMovieByIdAsync handler,
+            [FromServices] IGetMovieByIdHandler handler,
             CancellationToken cancellationToken = default)
         {
             try
@@ -70,7 +70,7 @@ namespace MovieMate.API.Controllers
         public async Task<IActionResult> UpdateMovieAsync(
             [FromRoute] Guid id,
             [FromBody] UpdateMovieRequest request,
-            [FromServices] IUpdateMovieAsync handler,
+            [FromServices] IUpdateMovieHandler handler,
             CancellationToken cancellationToken = default)
         {
             try
@@ -86,7 +86,7 @@ namespace MovieMate.API.Controllers
         }
 
         [HttpDelete(MovieApiEndpoints.Delete)]
-        public async Task<IActionResult> DeleteMovieAsync([FromRoute] Guid id, [FromServices] IDeleteMovieAsync handler, CancellationToken cancellationToken = default)
+        public async Task<IActionResult> DeleteMovieAsync([FromRoute] Guid id, [FromServices] IDeleteMovieHandler handler, CancellationToken cancellationToken = default)
         {
             try
             {

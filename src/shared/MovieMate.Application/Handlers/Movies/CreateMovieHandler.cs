@@ -1,7 +1,7 @@
 ﻿using MovieMate.Application.Extensions;
 using MovieMate.Application.Abstractions.Handlers.Movies;
 using MovieMate.Application.Abstractions.Services.DataAccess;
-using MovieMate.Application.Abstractions.Exceptions;
+using MovieMate.Domain.Models;
 
 namespace MovieMate.Application.Handlers.Movies
 {
@@ -19,18 +19,14 @@ namespace MovieMate.Application.Handlers.Movies
 
         public async Task CreateAsync(Abstractions.Models.Movie movie, CancellationToken cancellationToken = default)
         {
-            // validates that the genre is valid
-            var genres = await _genreQuery.FindByIds(movie.Genres, cancellationToken);
-            var invalidGenreIds = movie.Genres.Except(genres.Select(g => g.Id));
-            if (invalidGenreIds.Any())
-            {
-                throw new InvalidGenreException(invalidGenreIds.ToArray());
-            }
-            // TODO - validate that movie year of release is valid
-            // TODO - validate that we have not added this movie before
+            var movieDomain = movie.ToDomainModel();
+            // TODO - validate that movie year of release is valid - only add movies after certain year.
+            // TODO - validate that we have not added this movie before - checking the slug
 
             // ensure that movie.Genres are valid
-            await _movieRepository.CreateAsync(movie.ToDomainModel(), cancellationToken);
+            await _movieRepository.CreateAsync(movieDomain, cancellationToken);
+
+            // TODO - we need to use another repository to add to the mapping table
         }
     }
 }

@@ -22,10 +22,10 @@ namespace Microsoft.Extensions.DependencyInjection
         private static IServiceCollection AddHandlers(this IServiceCollection services) => services
             // Movie Handlers
             .AddScoped<ICreateMovieHandler, CreateMovieHandler>()
-            .AddScoped<IGetMovieByIdAsync, GetMovieByIdAsync>()
+            .AddScoped<IGetMovieByIdHandler, GetMovieByIdHandler>()
             .AddScoped<IGetAllMoviesHandler, GetAllMoviesHandler>()
-            .AddScoped<IUpdateMovieAsync, UpdateMovieAsync>()
-            .AddScoped<IDeleteMovieAsync, DeleteMovieAsync>()
+            .AddScoped<IUpdateMovieHandler, UpdateMovieHandler>()
+            .AddScoped<IDeleteMovieHandler, DeleteMovieHandler>()
             // Genre Handlers
             .AddScoped<ICreateGenreHandler, CreateGenreHandler>()
             .AddScoped<IGetAllGenreHandler, GetAllGenreHandler>();
