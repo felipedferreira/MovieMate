@@ -1,23 +1,37 @@
 ﻿using MovieMate.Application.Abstractions.Exceptions;
 using MovieMate.Application.Extensions;
 using MovieMate.Application.Abstractions.Handlers.Movies;
-using MovieMate.Application.Abstractions.Models;
 using MovieMate.Application.Abstractions.Services.DataAccess;
+using MovieMate.Domain.Models;
+using MovieMate.Application.Abstractions.Models;
 
 namespace MovieMate.Application.Handlers.Movies
 {
     public class UpdateMovieAsync : IUpdateMovieAsync
     {
         private readonly IMovieRepository _movieRepository;
-        public UpdateMovieAsync(IMovieRepository movieRepository)
+        private readonly IGenreQuery _genreQuery;
+
+        public UpdateMovieAsync(
+            IMovieRepository movieRepository, IGenreQuery genreQuery)
         {
             _movieRepository = movieRepository;
+            _genreQuery = genreQuery;
         }
 
-        public async Task UpdateAsync(Movie movie, CancellationToken cancellationToken = default)
+        public async Task UpdateAsync(Abstractions.Models.Movie movie, CancellationToken cancellationToken = default)
         {
-            var foundMovie = await _movieRepository.GetByIdAsync(movie.Id, cancellationToken)
+            var movieDomain = await _movieRepository.GetByIdAsync(movie.Id, cancellationToken)
                 ?? throw new NotFoundException($"Unable to find movie by id: {movie.Id}");
+
+            var movieGenres = (await _genreQuery.FindByIds(movie.Genres, cancellationToken))
+                .Select(genre => new MovieGenre
+                {
+                    GenreId = genre.Id,
+                    Id = genre.Id,
+                    MovieId = movieDomain.Id,
+                });
+            movieDomain.UpdateGenres(movieGenres);
             await _movieRepository.UpdateAsync(movie.ToDomainModel(), cancellationToken);
         }
     }
