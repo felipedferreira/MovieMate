@@ -43,7 +43,7 @@ namespace MovieMate.API.Controllers
         {
             _logger.LogInformation("Fetching all movies.");
             var movies = await handler.GetAsync(cancellationToken);
-            return Ok(movies.Select(ContractMapping.ToResponse));
+            return Ok(movies.Select(ContractMapping.ToResponse).ToArray());
         }
 
 

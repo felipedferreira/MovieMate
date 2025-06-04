@@ -7,28 +7,25 @@
         public required string Title { get; init; }
         public required int YearOfRelease { get; init; }
         public IReadOnlyList<MovieGenre> Genres => _genres;
-        public required string Slug { get; set; }
+        public required string Slug { get; init; }
 
-        public void UpdateGenres(IEnumerable<MovieGenre> genres)
+        public void UpdateGenres(IEnumerable<Guid> genresIds)
         {
             _genres.Clear();
-            foreach (var genre in genres)
+            foreach (var genresId in genresIds)
             {
-                AddGenre(genre);
+                AddGenre(genresId);
             }
         }
 
-        public void AddGenre(MovieGenre movieGenre)
+        public void AddGenre(Guid genresId)
         {
-            if (movieGenre is null)
-            {
-                throw new ArgumentNullException(nameof(movieGenre), "Movie genre cannot be null.");
-            }
-            if (_genres.Any(g => g.GenreId == movieGenre.GenreId))
+            if (_genres.Any(g => g.GenreId == genresId))
             {
                 throw new InvalidOperationException("This movie already has this genre.");
             }
-            _genres.Add(movieGenre);
+            var genre = new MovieGenre { Id = Guid.NewGuid(), GenreId = genresId, MovieId = Id, };
+            _genres.Add(genre);
         }
     }
 }

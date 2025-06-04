@@ -20,24 +20,13 @@ namespace MovieMate.Application.Handlers.Movies
         public async Task CreateAsync(Abstractions.Models.Movie movie, CancellationToken cancellationToken = default)
         {
             var movieDomain = movie.ToDomainModel();
-            var movieGenres = await _genreQuery.FindByIds(movie.Genres, cancellationToken);
-
-            foreach (var genre in movieGenres)
-            {
-                var movieGenre = new MovieGenre
-                {
-                    GenreId = genre.Id,
-                    Id = Guid.NewGuid(),
-                    MovieId = movieDomain.Id,
-                };
-                movieDomain.AddGenre(movieGenre);
-            }
-
-            // TODO - validate that movie year of release is valid
-            // TODO - validate that we have not added this movie before
+            // TODO - validate that movie year of release is valid - only add movies after certain year.
+            // TODO - validate that we have not added this movie before - checking the slug
 
             // ensure that movie.Genres are valid
             await _movieRepository.CreateAsync(movieDomain, cancellationToken);
+
+            // TODO - we need to use another repository to add to the mapping table
         }
     }
 }

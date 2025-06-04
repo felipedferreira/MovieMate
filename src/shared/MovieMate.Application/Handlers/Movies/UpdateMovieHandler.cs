@@ -20,18 +20,19 @@ namespace MovieMate.Application.Handlers.Movies
 
         public async Task UpdateAsync(Abstractions.Models.Movie movie, CancellationToken cancellationToken = default)
         {
-            var movieDomain = await _movieRepository.GetByIdAsync(movie.Id, cancellationToken)
+            // ensuring that movie exists
+            _ = await _movieRepository.GetByIdAsync(movie.Id, cancellationToken)
                 ?? throw new NotFoundException($"Unable to find movie by id: {movie.Id}");
 
-            var movieGenres = (await _genreQuery.FindByIds(movie.Genres, cancellationToken))
-                .Select(genre => new MovieGenre
-                {
-                    GenreId = genre.Id,
-                    Id = genre.Id,
-                    MovieId = movieDomain.Id,
-                });
-            movieDomain.UpdateGenres(movieGenres);
-            await _movieRepository.UpdateAsync(movie.ToDomainModel(), cancellationToken);
+            // TODO - ensure that these genres are valid ids
+            var movieDomain = movie.ToDomainModel();
+            var movieGenres = await _genreQuery.FindByIds(movie.Genres, cancellationToken);
+            // 1. Update Movie table - movie repository
+            movieDomain.UpdateGenres(movieGenres.Select(g => g.Id).ToArray());
+            await _movieRepository.UpdateAsync(movieDomain, cancellationToken);
+
+            // 2. TODO - Delete All MovieGenres where movieId - movieGenre repository
+            // 3. TODO - Add new MovieGenres - movieGenre repository
         }
     }
 }

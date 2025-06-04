@@ -25,6 +25,10 @@ namespace MovieMate.Application.Extensions
                 Slug = movie.Slug,
                 Id = movie.Id,
             };
+            foreach (var genre in movie.Genres)
+            {
+                domain.AddGenre(genre);
+            }
             return domain;
         }
 
