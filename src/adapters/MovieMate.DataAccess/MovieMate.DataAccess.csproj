@@ -4,6 +4,6 @@
     <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="9.0.0" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\shared\MovieMate.Application.Abstractions\MovieMate.Application.Abstractions.csproj" />
+    <ProjectReference Include="..\..\shared\MovieMate.Domain\MovieMate.Domain.csproj" />
   </ItemGroup>
 </Project>

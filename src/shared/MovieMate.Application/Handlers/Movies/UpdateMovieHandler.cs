@@ -24,13 +24,15 @@ namespace MovieMate.Application.Handlers.Movies
             _ = await _movieRepository.GetByIdAsync(movie.Id, cancellationToken)
                 ?? throw new NotFoundException($"Unable to find movie by id: {movie.Id}");
 
-            // TODO - ensure that these genres are valid ids
             var movieDomain = movie.ToDomainModel();
-            var movieGenres = await _genreQuery.FindByIds(movie.Genres, cancellationToken);
-            // 1. Update Movie table - movie repository
-            movieDomain.UpdateGenres(movieGenres.Select(g => g.Id).ToArray());
-            await _movieRepository.UpdateAsync(movieDomain, cancellationToken);
 
+            // TODO - ensure that these genres are valid ids
+            var movieGenres = await _genreQuery.FindByIds(movie.Genres, cancellationToken);
+
+            // updating the domain with the ids
+            movieDomain.UpdateGenres(movie.Genres);
+            // 1. Update Movie table - movie repository
+            await _movieRepository.UpdateAsync(movieDomain, cancellationToken);
             // 2. TODO - Delete All MovieGenres where movieId - movieGenre repository
             // 3. TODO - Add new MovieGenres - movieGenre repository
         }
