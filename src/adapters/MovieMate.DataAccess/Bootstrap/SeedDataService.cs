@@ -1,5 +1,5 @@
 ﻿using Microsoft.Extensions.Hosting;
-using MovieMate.Application.Abstractions.Services.DataAccess;
+using MovieMate.Domain.Aggregates.MovieAggregate;
 
 namespace MovieMate.DataAccess.Bootstrap
 {
@@ -13,14 +13,14 @@ namespace MovieMate.DataAccess.Bootstrap
 
         public async Task StartAsync(CancellationToken cancellationToken)
         {
-            IEnumerable<Domain.Models.Genre> seedData = [
-                new Domain.Models.Genre
+            IEnumerable<Genre> seedData = [
+                new Genre
                 {
                     Id = Constants.WellKnownGenreIds.Action,
                     Title = "Action",
                     Description = "Action movies are characterized by a focus on physical feats, including fights, chases, explosions, and stunts."
                 },
-                new Domain.Models.Genre
+                new Genre
                 {
                     Id = Constants.WellKnownGenreIds.Romance,
                     Title = "Romance",

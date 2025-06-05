@@ -1,7 +1,7 @@
 ﻿using MovieMate.Application.Abstractions.Handlers.Genres;
-using MovieMate.Application.Abstractions.Models;
-using MovieMate.Application.Abstractions.Services.DataAccess;
 using MovieMate.Application.Extensions;
+using MovieMate.Domain.Aggregates.MovieAggregate;
+using Genre = MovieMate.Application.Abstractions.Models.Genre;
 
 namespace MovieMate.Application.Handlers.Genres
 {

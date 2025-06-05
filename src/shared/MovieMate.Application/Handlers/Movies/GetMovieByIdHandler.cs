@@ -2,7 +2,8 @@
 using MovieMate.Application.Extensions;
 using MovieMate.Application.Abstractions.Exceptions;
 using MovieMate.Application.Abstractions.Handlers.Movies;
-using MovieMate.Application.Abstractions.Services.DataAccess;
+using MovieMate.Domain.Aggregates.MovieAggregate;
+using Movie = MovieMate.Application.Abstractions.Models.Movie;
 
 namespace MovieMate.Application.Handlers.Movies
 {

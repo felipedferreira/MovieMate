@@ -1,4 +1,4 @@
-﻿using MovieMate.Domain.Models;
+﻿using MovieMate.Domain.Aggregates.MovieAggregate;
 
 namespace MovieMate.DataAccess
 {

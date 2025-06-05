@@ -1,4 +1,4 @@
-﻿namespace MovieMate.Domain.Models
+﻿namespace MovieMate.Domain.Aggregates.MovieAggregate
 {
     public class Movie
     {

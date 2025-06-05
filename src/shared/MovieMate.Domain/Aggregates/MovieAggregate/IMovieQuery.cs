@@ -1,7 +1,6 @@
 ﻿using MovieMate.Application.Abstractions.Exceptions;
-using MovieMate.Domain.Models;
 
-namespace MovieMate.Application.Abstractions.Services.DataAccess
+namespace MovieMate.Domain.Aggregates.MovieAggregate
 {
     public interface IMovieQuery
     {

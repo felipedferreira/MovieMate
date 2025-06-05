@@ -1,4 +1,4 @@
-﻿namespace MovieMate.Domain.Models
+﻿namespace MovieMate.Domain.Aggregates.MovieAggregate
 {
     public class Genre
     {
@@ -6,6 +6,6 @@
 
         public required string Description { get; init; }
 
-        public Guid Id { get; set; }
+        public Guid Id { get; init; }
     }
 }

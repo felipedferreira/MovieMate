@@ -1,5 +1,4 @@
-﻿using MovieMate.Application.Abstractions.Services.DataAccess;
-using MovieMate.Domain.Models;
+﻿using MovieMate.Domain.Aggregates.MovieAggregate;
 
 namespace MovieMate.DataAccess.Services
 {
