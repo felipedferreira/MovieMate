@@ -1,6 +1,6 @@
 ﻿using MovieMate.Application.Extensions;
 using MovieMate.Application.Abstractions.Handlers.Movies;
-using MovieMate.Domain.Aggregates.MovieAggregate;
+using MovieMate.Domain.MovieAggregate.MovieAggregate;
 using Movie = MovieMate.Application.Abstractions.Models.Movie;
 
 namespace MovieMate.Application.Handlers.Movies

@@ -56,7 +56,7 @@ namespace MovieMate.API.Controllers
         {
             try
             {
-                _logger.LogInformation("Fetching a movie by id.");
+                _logger.LogInformation("Fetching a movie by id: {id}.", id);
                 var movie = await handler.GetAsync(id, cancellationToken);
                 return Ok(movie.ToResponse());
             }
@@ -75,6 +75,7 @@ namespace MovieMate.API.Controllers
         {
             try
             {
+                _logger.LogInformation("Updating a movie by id: '{id}'", id);
                 var movie = request.ToApplication(id);
                 await handler.UpdateAsync(movie, cancellationToken);
                 return NoContent();
@@ -90,6 +91,7 @@ namespace MovieMate.API.Controllers
         {
             try
             {
+                _logger.LogInformation("Deleting a movie by id: '{id}'", id);
                 await handler.DeleteByIdAsync(id, cancellationToken);
                 return Accepted();
             }

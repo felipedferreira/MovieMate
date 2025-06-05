@@ -1,6 +1,6 @@
 ﻿using MovieMate.Application.Abstractions.Handlers.Genres;
 using MovieMate.Application.Extensions;
-using MovieMate.Domain.Aggregates.MovieAggregate;
+using MovieMate.Domain.MovieAggregate.MovieAggregate;
 using Genre = MovieMate.Application.Abstractions.Models.Genre;
 
 namespace MovieMate.Application.Handlers.Genres

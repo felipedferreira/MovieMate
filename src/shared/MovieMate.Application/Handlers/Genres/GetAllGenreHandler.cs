@@ -1,5 +1,5 @@
 ﻿using MovieMate.Application.Abstractions.Handlers.Genres;
-using MovieMate.Domain.Aggregates.MovieAggregate;
+using MovieMate.Domain.MovieAggregate.MovieAggregate;
 using MovieMate.Application.Extensions;
 using Genre = MovieMate.Application.Abstractions.Models.Genre;
 

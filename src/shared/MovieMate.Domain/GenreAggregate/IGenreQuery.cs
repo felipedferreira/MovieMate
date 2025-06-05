@@ -1,4 +1,4 @@
-﻿namespace MovieMate.Domain.Aggregates.MovieAggregate
+﻿namespace MovieMate.Domain.MovieAggregate.MovieAggregate
 {
     public interface IGenreQuery
     {

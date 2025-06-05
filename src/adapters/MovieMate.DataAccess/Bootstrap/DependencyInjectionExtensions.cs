@@ -1,4 +1,4 @@
-﻿using MovieMate.Domain.Aggregates.MovieAggregate;
+﻿using MovieMate.Domain.MovieAggregate.MovieAggregate;
 using MovieMate.DataAccess;
 using MovieMate.DataAccess.Bootstrap;
 using MovieMate.DataAccess.Services;
