@@ -28,7 +28,7 @@ namespace MovieMate.API.Controllers
                 var movie = request.ToApplication();
                 _logger.LogInformation(MovieApiEndpoints.GetById, movie.Id);
                 await handler.CreateAsync(movie, cancellationToken);
-                return CreatedAtAction(nameof(GetMovieByIdAsync), new { id = movie.Id }, movie);
+                return CreatedAtAction(nameof(GetMovieByIdAsync), new { id = movie.Id }, movie.ToResponse());
             }
             catch (InvalidGenreException ex)
             {
