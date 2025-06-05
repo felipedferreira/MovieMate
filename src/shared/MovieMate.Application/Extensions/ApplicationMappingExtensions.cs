@@ -9,7 +9,7 @@ namespace MovieMate.Application.Extensions
         {
             return new ApplicationModel.Movie
             {
-                Genres = movie.Genres.Select(g => g.GenreId).ToArray(),
+                Genres = movie.Genres,
                 Id = movie.Id,
                 Title = movie.Title,
                 YearOfRelease = movie.YearOfRelease,
