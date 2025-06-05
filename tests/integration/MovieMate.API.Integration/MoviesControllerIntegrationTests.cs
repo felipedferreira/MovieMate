@@ -88,7 +88,7 @@ namespace MovieMate.API.Integration
             // Act V - Deleting the movie
             var deleteMovieUrl = MovieApiEndpoints.Delete.Replace("{id:guid}", createdMovieId);
             using var deleteMovieByIdApiResponse = await httpClient.DeleteAsync(deleteMovieUrl);
-            Assert.Equal(HttpStatusCode.Accepted, updateMovieByIdApiResponse.StatusCode);
+            Assert.Equal(HttpStatusCode.Accepted, deleteMovieByIdApiResponse.StatusCode);
         }
     }
 }
