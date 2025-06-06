@@ -25,6 +25,7 @@ namespace MovieMate.API
                 builder.Services.AddOpenApi();
 
                 var app = builder.Build();
+                app.UseDefaultFiles();
                 app.UseStaticFiles();
 
                 //Add support to logging request with SERILOG
