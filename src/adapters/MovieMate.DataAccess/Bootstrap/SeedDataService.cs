@@ -1,5 +1,5 @@
 ﻿using Microsoft.Extensions.Hosting;
-using MovieMate.Domain.MovieAggregate.MovieAggregate;
+using MovieMate.Domain.MovieAggregate;
 
 namespace MovieMate.DataAccess.Bootstrap
 {

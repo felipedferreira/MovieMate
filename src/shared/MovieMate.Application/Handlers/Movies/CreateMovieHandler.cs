@@ -1,19 +1,15 @@
 ﻿using MovieMate.Application.Extensions;
 using MovieMate.Application.Abstractions.Handlers.Movies;
-using MovieMate.Domain.MovieAggregate.MovieAggregate;
+using MovieMate.Domain.MovieAggregate;
 
 namespace MovieMate.Application.Handlers.Movies
 {
     internal class CreateMovieHandler : ICreateMovieHandler
     {
         private readonly IMovieRepository _movieRepository;
-        private readonly IGenreQuery _genreQuery;
-        public CreateMovieHandler(
-            IMovieRepository movieRepository,
-            IGenreQuery genreQuery)
+        public CreateMovieHandler(IMovieRepository movieRepository)
         {
             _movieRepository = movieRepository;
-            _genreQuery = genreQuery;
         }
 
         public async Task CreateAsync(Abstractions.Models.Movie movie, CancellationToken cancellationToken = default)
@@ -24,8 +20,6 @@ namespace MovieMate.Application.Handlers.Movies
 
             // ensure that movie.Genres are valid
             await _movieRepository.CreateAsync(movieDomain, cancellationToken);
-
-            // TODO - we need to use another repository to add to the mapping table
         }
     }
 }

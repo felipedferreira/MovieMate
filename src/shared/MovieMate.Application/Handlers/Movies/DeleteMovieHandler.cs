@@ -1,6 +1,6 @@
 ﻿using MovieMate.Application.Abstractions.Exceptions;
 using MovieMate.Application.Abstractions.Handlers.Movies;
-using MovieMate.Domain.MovieAggregate.MovieAggregate;
+using MovieMate.Domain.MovieAggregate;
 
 namespace MovieMate.Application.Handlers.Movies
 {
@@ -18,6 +18,8 @@ namespace MovieMate.Application.Handlers.Movies
                 ?? throw new NotFoundException($"Unable to find movie by id: {id}");
 
             await _movieRepository.DeleteByIdAsync(id, cancellationToken);
+
+            // delete relationships for movie generes - DeleteByMovieIdAsync
         }
     }
 }

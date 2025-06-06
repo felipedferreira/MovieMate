@@ -1,4 +1,4 @@
-﻿using MovieMate.Domain.MovieAggregate.MovieAggregate;
+﻿using MovieMate.Domain.MovieAggregate;
 using ApplicationModel = MovieMate.Application.Abstractions.Models;
 
 namespace MovieMate.Application.Extensions

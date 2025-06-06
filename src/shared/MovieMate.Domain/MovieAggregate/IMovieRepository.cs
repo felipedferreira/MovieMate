@@ -1,6 +1,6 @@
 ﻿using MovieMate.Application.Abstractions.Exceptions;
 
-namespace MovieMate.Domain.MovieAggregate.MovieAggregate
+namespace MovieMate.Domain.MovieAggregate
 {
     public interface IMovieRepository
     {
